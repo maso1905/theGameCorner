@@ -1,0 +1,106 @@
+﻿
+@using Microsoft.AspNetCore.Identity
+@using AuthSystem.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model IEnumerable<AuthSystem.Models.Game>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<blockquote class="blockquote text-center p-5">
+    <p class="mb-2 display-4">
+        &#8220; The Game Corner is the ultimate source of game art inspiration. &#8221;
+    </p>
+    <footer class="blockquote-footer" style="color:black !important;">Someone famous in <cite title="Source Title">Expert Game Magazine</cite></footer>
+</blockquote><!--end:Blockquote-->
+
+<div class="container">
+    <div class="container text-left pl-0">
+        <div class="btn-group">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Genre
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <form asp-controller="Game" asp-action="Index">
+                    @{
+                        List<string> seenGenres = new List<string>();
+                        foreach (var game in Model)
+                        {
+                            if (!seenGenres.Contains(game.Genre))
+                            {
+                                seenGenres.Add(game.Genre);
+                            }
+                        }
+
+                        foreach (string genre in seenGenres)
+                        {
+                            <button type="submit" name="searchString" class="dropdown-item" value="@genre">@genre</button>
+                        }
+                    }
+                </form>
+                <div class="dropdown-divider"></div>
+                <a asp-controller="Game" asp-action="Index" class="dropdown-item">Back to all games</a>
+            </div>
+        </div><!--end:Genre dropdown-->
+
+        <div class="btn-group">
+            @{
+                if (ViewData["DateSortParm"].ToString() == "date_desc")
+                {
+                    <a class="btn btn-secondary" id="changeDateSort" asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">
+                        Most Recent
+                    </a>
+                }
+                else
+                {
+                    <a class="btn btn-secondary" id="changeDateSort" asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">
+                        Oldest
+                    </a>
+                }
+            }
+        </div><!--end:Date dropdown-->
+
+        <div class="btn-group dropright">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Name
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <form asp-controller="Game" asp-action="Index">
+                    <input type="text" name="searchString" placeholder="Search...">
+                </form>
+                <div class="dropdown-divider"></div>
+
+                <form asp-controller="Game" asp-action="Index">
+                    @{
+                        foreach (var game in Model)
+                        {
+                            <button type="submit" name="searchString" class="dropdown-item" value="@game.Name.ToString()">@game.Name.ToString()</button>
+                        }
+                    }
+                </form>
+                <div class="dropdown-divider"></div>
+                <a asp-controller="Game" asp-action="Index" class="dropdown-item">Back to all games</a>
+            </div>
+        </div><!--end:Name dropdown-->
+    </div><!--end:Sorting button group-->
+
+    <div class="mt-3 gallery-grid">
+        @{
+            foreach (var game in Model)
+            {
+                <a href="@("/Game/Details/" + game.Id)">
+                    <figure class="gallery-frame text-center">
+                        <img src="@("~/img/userGameImg/" + game.ImageName)" alt="@game.Name" width="340px" height="240px" class="gallery-img" asp-append-version="true" />
+                        <figcaption class="figure-caption">@game.Name</figcaption>
+                    </figure>
+                </a>
+            }
+        }
+    </div><!--end: Gallery grid-->
+
+</div>
+    

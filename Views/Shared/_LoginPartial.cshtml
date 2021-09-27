@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using AuthSystem.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav nav-tabs text-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Welcome <b>@((await UserManager.GetUserAsync(User)).FirstName)</b> !</a>
+        </li>
+        <li class="nav-item">
+            <form id="logoutForm" class="d-inline-block justify-content-center" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Game", new { area = "" })">
+                <button id="logout" type="submit" class="nav-link bg-transparent">Logout</button>
+            </form>
+        </li>
+    }
+</ul>
+

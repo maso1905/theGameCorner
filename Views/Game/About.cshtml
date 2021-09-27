@@ -1,0 +1,104 @@
+﻿
+@model IEnumerable<AuthSystem.Models.Employee>
+
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<div class="row mb-2">
+    <div class="col">
+        <blockquote class="blockquote text-center p-5">
+            <div class="row justify-content-center">
+                <p class="col display-4">
+                    We are a modern and an innovative company with the ambition to inspire all game creators with
+                    beautiful art!
+                </p>
+            </div>
+        </blockquote>
+    </div>
+</div><!--end:Blockquote-->
+
+<div class="container mb-4">
+    <div class="col card pt-2 mb-2">
+        <h2 class="text-center">
+            Meet Our Team
+        </h2>
+    </div>
+    <div class="container gallery-grid">
+        @{
+            foreach (var employee in Model)
+            {
+                <div class="col p-0">
+                    <div class="card box-shadow">
+                        <img src="@("/img/employees/" + employee.ImageName)" alt="@(employee.Name + "-" + employee.WorkTitle)" style="width:100%;">
+                        <div class="container pt-2">
+                            <h3>@employee.Name</h3>
+                            <p class="title">@employee.WorkTitle</p>
+                            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                            <p>
+                                <ul class="nav nav-pills flex-column">
+                                    <li class="nav-item"><a class="nav-link btn-secondary" href="#">Contact</a></li>                                 
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div><!--end:Employee images-->
+
+<div class="container mb-4">
+    <div class="col card pt-2 mb-2">
+        <h2 class="text-center"> Accessibility</h2>
+    </div>
+    <div class="card pt-2 pb-2">
+        <div class="col">
+            <h3>Statement</h3>
+            <p>The Game Corner is behind this website. We want as many people as possible to be able to use the website. This document describes how Ekerö Färdtjänst complies with the law on accessibility to digital public services, any known accessibility problems and how you can report deficiencies to us so that we can remedy them.</p>
+        </div>
+        <div class="col">
+            <h3>How accessible is the website?</h3>
+            <p>We are aware that parts of the website are not fully accessible. See the section on content not available below for more information.</p>
+        </div>
+        <div class="col">
+            <h3>What can you do if you can not use parts of the site?</h3>
+            <p>
+                If you need content from The Game Corner that is not available to you, but which is exempt from the law's scope of application as described below, you can contact us, see the contact button on "Meet Our Team".
+            </p>
+        </div>
+        <div class="col">
+            <h3>Report deficiencies in website accessibility</h3>
+            <p>We are constantly striving to improve the accessibility of the website. If you discover problems that are not described on this page, or if you believe that we do not meet the requirements of the law, contact us to let us know that the problem exists.</p>
+        </div>
+        <div class="col">
+            <h3>Supervision</h3>
+            <p>
+                The authority for digital administration is responsible for supervising the law on accessibility to digital public services. If you are not satisfied with how we handle your remark about lack of web accessibility or your request for access to content, you can report to the Authority for digital administration and report it.
+            </p>
+        </div>
+        <div class="col">
+            <h3>
+                Technical information about the accessibility of the website
+            </h3>
+            <p>This website is fully compliant with the Digital Public Service Accessibility Act.</p>
+        </div>
+        <div class="col">
+            <h3>
+                How we tested the site
+            </h3>
+            <p>
+                We have done a self-assessment (internal testing) of The Game Corner.
+                The most recent assessment was made on Mars 10, 2021.
+                The website was published on Mars 10, 2021.
+                The report was last updated on Mars 10, 2021.
+            </p>
+        </div>
+    </div>
+</div><!--end:Accessibility Statement, temporarily hardcodded.-->
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,206 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+a {
+  color: rgb(31, 31, 31);
+}
+table a,
+#textDecoLink {
+    text-decoration: underline !important;
+}
+
+.col.card{
+    background-color: rgb(252,167,48) !important;
+}
+.btn-primary {
+    color: rgb(31, 31, 31);
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+.btn-secondary {
+    background-color: rgb(252,167,48);
+    box-shadow: 4px 4px 5px 0px rgba(30, 30, 30, 0.22);
+    color: rgb(31, 31, 31);
+    border: none !important;
+}
+    .btn-secondary:hover {
+        background-color: rgb(213, 141, 39);
+        border-color: rgb(213, 141, 39);
+    }
+    .btn-secondary.active {
+        border-color: black;
+    }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: rgb(31, 31, 31);
+    background-color: rgb(252,167,48);
+    box-shadow: 4px 4px 5px 0px rgba(30, 30, 30, 0.22);
+    border: none !important;
+}
+
+.nav-tabs {
+    border: none !important;
+}
+.nav-tabs li a.active {
+    border: none !important;
+    border-bottom: 2px solid black !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+}
+.nav-tabs li a:hover,
+.nav-tabs li button:hover {
+    border: none !important;
+    border-bottom: 2px solid black !important;
+    text-decoration: none !important;
+}
+
+.dropdown-menu,
+.dropdown-item{
+    background-color: rgb(252,167,48) !important;
+}
+
+@media screen and (max-width: 900px) {
+    .blockquote .display-4{
+        font-size: 95% !important;
+    }
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+    border-top: 1px solid black !important;
+}
+.border-bottom {
+    border-bottom: 1px solid black !important;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: .5rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 60px;
+    background: rgb(44,39,143);
+    background: linear-gradient(0deg, rgba(44,39,143) 0%, rgba(155,64,190) 46%, rgba(252,167,48) 100%);
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+  text-align: center;
+}
+
+/*For Login/Logout Tab Control
+----------------------------------------------------*/
+.card {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+div.card-content {
+    margin: 3%;
+}
+div.login-logout-tab div.card-header {
+    padding: 0px 0px 12px 0px;
+    width: 100%;
+}
+
+div.login-logout-tab ul.nav-tabs{
+    margin: 0px 0px -12px 0px;
+}
+
+div.login-logout-tab li.nav-item{
+    width: 50%;
+}
+
+div.login-logout-tab a.nav-link{
+    font-size: 25px;
+    color: black;
+    text-align: center;
+}
+
+/* Image Grid 
+---------------------------------------------------*/
+.gallery-grid {
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 1.5rem;
+    justify-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* The Picture Frame */
+.gallery-frame {
+    padding: .5rem;
+    margin: 0 auto;
+    border-radius: 2px;
+    background-color: rgb(252,167,48);
+    box-shadow: 4px 4px 5px 0px rgba(30, 30, 30, 0.35);
+}
+    .gallery-frame:hover {
+        border-radius: 1px;
+        box-shadow: 0px 20px 0px -10px none, 0px -20px 0px -10px none, 20px 0px 0px -10px none, -20px 0px 0px -10px none, 0px 0px 0px 5px #fff;
+    }
+/* The Images */
+.gallery-img {
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    transition: opacity 0.25s ease-in-out;
+}
+    .gallery-img:hover {
+        opacity: .6;
+        border-radius: 2px;
+        box-shadow: none;
+    }
+figcaption{
+    padding-top: .5rem;
+    color: black !important;
+}
+
+/* MyGames Search 
+---------------------------------------------------*/
+#basic-addon1 {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+#input-search {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+
+
+/* MyGames Table 
+---------------------------------------------------*/
+table {
+    background-color: rgba(255, 255, 255, 0.3);
+}

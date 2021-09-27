@@ -1,0 +1,46 @@
+﻿
+@model AuthSystem.Models.Game
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+<hr />
+
+<div class="container pl-0 pt-4 pb-4">
+    <h2 class="mb-1">Recommended image ratio:</h2><br />
+    <h3>3:2</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genre" class="control-label"></label>
+                <input asp-for="Genre" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label><br />
+                <input id="uploadImage" asp-for="ImageFile" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="upload" value="Save" class="btn btn-secondary" />
+                <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

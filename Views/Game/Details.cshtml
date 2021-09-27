@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using AuthSystem.Areas.Identity.Data
+
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+
+@model AuthSystem.Models.Game
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>
+    Details - @Html.DisplayFor(model => model.Name)
+</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Genre)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Genre)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.ApplicationUser)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.ApplicationUser.FirstName)
+                @Html.DisplayFor(model => model.ApplicationUser.LastName)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+            <dt class="col-sm-6">
+                Download fullsize game image
+            </dt>
+            <dd class="col-sm-6">
+                <a href="@("/img/userGameImg/" + Model.ImageName)" target="_blank">
+                    Open in new tab
+                    <asp:Image ID="@(Model.ImageName)" runat="server" ImageUrl="@("/img/" + Model.ImageName)" />
+                </a>
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <img src="@("~/img/userGameImg/" + Model.ImageName)" asp-append-version="true" title="@(Model.ImageName)" width="340px" height="240px" />
+    </div>
+</div>
+
+<!--Displays edit buttons if the game belongs to the current user-->
+@{
+    if (Model.ApplicationUser.Id == UserManager.GetUserId(User))
+    {
+        <div>
+            <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+            <a class="btn btn-secondary" asp-action="MyGames">Back to List</a>
+        </div>
+    }
+    else
+    {
+        <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+    }
+}
+
+
